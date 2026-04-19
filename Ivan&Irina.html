@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Приглашение на свадьбу | Ivan & Irina</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Sekuya&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafafa;
+            font-family: 'Montserrat', sans-serif;
+            color: #3a2a2a;
+            scroll-behavior: smooth;
+        }
+
+        /* Анимации появления */
+        .animated {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s ease;
+        }
+        .animated.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 90px 0;
+            border-bottom: 1px solid rgba(210, 180, 140, 0.2);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+		h1 {
+			font-family: 'Dancing Script', cursive;
+		}
+        h2 {
+            font-size: 2.7rem;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+        }
+        h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 2px;
+            background: #fafafa;
+            margin: 18px auto 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #fff3db;
+            color: #000;
+            border: none;
+            padding: 14px 38px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .btn:hover {
+            background: #d4af7a;
+			color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline {
+            background: #fafafa;
+            border: 1.5px solid #d4af7a;
+            color: #d4af7a;
+        }
+        .btn-outline:hover {
+            background: #fafafa;
+            color: white;
+        }
+
+        /* Hero секция - основная */
+		.hero {
+			position: relative;
+			height: 100vh;
+			min-height: 650px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+			overflow: hidden;
+		}
+
+		/* Псевдоэлемент для фонового изображения с анимацией */
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(rgba(30, 20, 15, 0.45), rgba(30, 20, 15, 0.4)), url('https://i.pinimg.com/originals/42/31/8f/42318f6271dec8c2dc81fa8bab06e398.jpg?nii=t') 50% 60%/cover no-repeat;
+			opacity: 0;
+			transform: scale(1.05);
+			transition: opacity 1.2s ease, transform 1.2s ease;
+			z-index: 0;
+		}
+
+		/* Когда секция становится видимой - фон появляется */
+		.hero.visible-bg::before {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		/* Контент поверх фона */
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			background: rgba(0, 0, 0, 0.45);
+			padding: 50px 40px;
+			border-radius: 30px;
+			backdrop-filter: blur(4px);
+			border: 1px solid rgba(255,255,240,0.2);
+		}
+        .hero h1 {
+            font-size: 4.8rem;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            font-weight: 100;
+        }
+        .hero .date {
+            font-size: 1.7rem;
+            font-weight: 300;
+            margin-bottom: 35px;
+            font-family: 'Playfair Display';
+            letter-spacing: 2px;
+        }
+			   /* ===== АНИМАЦИЯ БЬЮЩЕГОСЯ СЕРДЕЧКА ===== */
+		.beating-heart {
+			font-size: 2.8rem;
+			display: inline-block;
+			animation: heartbeat 2.0s ease-in-out infinite;
+			transform-origin: center;
+			color: #ffffff;
+			text-shadow: 0 0 5px rgba(255,255,255,0.5);
+		}
+		@keyframes heartbeat {
+			0% {
+				transform: scale(1);
+			}
+			25% {
+				transform: scale(1.2);
+			}
+			35% {
+				transform: scale(1.15);
+			}
+			45% {
+				transform: scale(1.3);
+			}
+			55% {
+				transform: scale(1.1);
+			}
+			65% {
+				transform: scale(1.2);
+			}
+			75% {
+				transform: scale(1);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+		}
+
+		/* Эффект свечения при пульсации */
+		@keyframes heartGlow {
+			0%, 100% {
+				text-shadow: 0 0 0 rgba(255, 107, 107, 0);
+			}
+			50% {
+				text-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+			}
+		}
+
+        /* Приветствие */
+        .greeting {
+            text-align: center;
+            background: #fafafa;
+        }
+        .greeting p {
+            max-width: 740px;
+            margin: 25px auto 0;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #4e3a2e;
+        }
+
+        /* Календарь */
+        .calendar-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+        .calendar-table {
+            width: 100%;
+            max-width: 550px;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .calendar-table th {
+            background: #fff3db;
+            color: black;
+            padding: 15px 8px;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .calendar-table td {
+            padding: 14px 8px;
+            text-align: center;
+            border-bottom: 1px solid #f2e5d8;
+            font-weight: 500;
+        }
+        .wedding-day {
+            background: #fff3db;
+            border-radius: 40px;
+            font-weight: 800;
+            color: #b47c48;
+        }
+
+        /* Дресс-код */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 40px 0 25px;
+            flex-wrap: wrap;
+        }
+        .color-item {
+            text-align: center;
+        }
+        .color-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            border: 3px solid white;
+        }
+        .note-soft {
+            font-size: 0.9rem;
+            color: #8b6b4b;
+            margin-top: 25px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Детали карточки */
+        .details-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 40px;
+        }
+        .detail-item {
+            background: white;
+            padding: 35px 22px;
+            border-radius: 32px;
+            width: 270px;
+            text-align: center;
+            transition: all 0.25s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .detail-item i {
+            font-size: 2.8rem;
+            color: #d4af7a;
+            margin-bottom: 22px;
+        }
+        .detail-item h4 {
+            font-family: 'Playfair Display';
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+        }
+
+        /* Блоки мест (роспись + банкет) */
+        .location-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        .location-card {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 280px;
+            transition: 0.25s;
+        }
+        .location-card:hover {
+            transform: translateY(-6px);
+        }
+        .map-placeholder {
+            background: #fff3db;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a6246;
+            font-size: 0.9rem;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .location-info {
+            padding: 28px 24px 32px;
+            text-align: center;
+        }
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display';
+        }
+        .location-info .address {
+            color: #8e6f4c;
+            margin: 15px 0;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .location-info .time-badge {
+            background: #fff3db;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin: 10px 0;
+        }
+        .btn-map {
+            margin-top: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff3db;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #5d3f28;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .btn-map:hover {
+            background: #d4af7a;
+            color: white;
+        }
+
+        /* Таймер */
+        .timer-section {
+            background: #fafafa;
+            border-radius: 55px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+        .timer-digits {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .timer-block {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 28px;
+            min-width: 110px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+        }
+        .timer-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #c19a5b;
+            font-family: 'Montserrat';
+        }
+        .timer-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Анкета */
+        .form-card {
+            max-width: 640px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 38px;
+            border-radius: 48px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.08);
+        }
+        .input-field, .styled-select {
+            width: 100%;
+            padding: 14px 22px;
+            margin-bottom: 20px;
+            border: 1px solid #e2cfb5;
+            border-radius: 60px;
+            font-family: 'Montserrat';
+            font-size: 0.95rem;
+            background: #fffdf9;
+            transition: 0.2s;
+        }
+        .radio-group-custom {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .form-message-area {
+            margin-top: 20px;
+            display: none;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Telegram */
+        .telegram-card {
+            padding: 50px 30px;
+            text-align: center;
+			background: white;
+            border-collapse: collapse;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .telegram-card i {
+            font-size: 3.8rem;
+            color: #2aabd2;
+        }
+		.telegram-card .btn {
+			background: linear-gradient(135deg, #553bff, #c600f7, #38c0ff);
+			background-size: 200% 200%;
+			border: none;
+			animation: gradientShift 4s ease infinite;
+			transition: transform 0.3s ease;
+		}
+
+		.telegram-card .btn:hover {
+			transform: translateY(-2px);
+		}
+
+		@keyframes gradientShift {
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
+			100% { background-position: 0% 50%; }
+		}
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #f5ede2;
+            font-size: 0.85rem;
+            color: #5f4c38;
+        }
+
+        @media (max-width: 750px) {
+            .hero h1 { font-size: 2.6rem; letter-spacing: 3px; }
+            h2 { font-size: 2rem; }
+            .timer-block { min-width: 75px; padding: 12px 10px; }
+            .timer-number { font-size: 1.9rem; }
+            section { padding: 60px 0; }
+            .form-card { padding: 30px 20px; }
+            .location-card { min-width: 100%; }
+        }
+		/* ===== ШРИФТ ДЛЯ ПОДПИСИ АВТОРА ===== */
+		.footer-author {
+			font-family: 'Sekuya', cursive;
+			font-size: 1rem;
+			letter-spacing: 1px;
+			color: #1f1f1f;
+			margin-top: 12px;
+			opacity: 0.9;
+			transition: all 0.3s ease;
+		}
+
+		.footer-author:hover {
+			opacity: 1;
+			letter-spacing: 2px;
+		}
+		.author-link {
+			color: #d4af7a;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+		}
+
+		.author-link .link-arrow {
+			opacity: 0;
+			transform: translateX(-5px);
+			transition: all 0.3s ease;
+			font-size: 1rem;
+		}
+
+		.author-link:hover {
+			color: #c9a05e;
+		}
+
+		.author-link:hover .link-arrow {
+			opacity: 1;
+			transform: translateX(0);
+		}
+    </style>
+</head>
+<body>
+
+<!-- Главный экран -->
+<section class="hero" id="top">
+    <div class="hero-content animated" id="heroAnimate">
+        <h1>
+		Ivan 
+		<i class="fas fa-heart beating-heart"></i> 
+		Irina
+    </h1>
+        <div class="date">29 Мая 2026 · 11:40</div>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Обращение -->
+    <section class="greeting animated">
+        <h2>Дорогие друзья!</h2>
+        <p>Один день в этом году будет для нас особенным, и мы хотим разделить его с вами.<br>
+        Ждем вас на празднике по случаю нашей свадьбы!</p>
+    </section>
+
+    <!-- Календарь -->
+    <section class="animated">
+        <h2>Май, 2026</h2>
+        <div class="calendar-wrapper">
+            <table class="calendar-table">
+                <thead>
+                    <tr><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+                    <tr><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td></tr>
+                    <tr><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+                    <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+                    <tr><td class="wedding-day">29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align:center; margin-top:22px; font-weight:500;">★ 29 мая — наш особенный день ★</p>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ: МЕСТО РОСПИСИ И БАНКЕТА -->
+    <section class="animated">
+        <h2>Церемония и банкет</h2>
+        <div class="location-grid">
+            <!-- Место росписи (ЗАГС / выездная) -->
+            <div class="location-card">
+                <div class="map-placeholder">
+                    <i class="fas fa-ring" style="font-size: 3rem; opacity: 0.7;"></i>
+                    <span>🏛️ Дворец бракосочетания</span>
+                </div>
+                <div class="location-info">
+                    <h3>Торжественная роспись</h3>
+                    <div class="time-badge"><i class="far fa-clock"></i> Начало регистрации 11:40 | Сбор гостей 11:00 </div>
+                    <div class="address">
+                        <i class="fas fa-location-dot"></i> Барнаул, ул. Гоголя, 46<br>
+                        Дворец бракосочетания по городу Барнаулу
+                    </div>
+                    <a href="https://yandex.ru/maps/org/otdel_zags_dvorets_brakosochetaniya_po_gorodu_barnaulu/242962524062/?ll=83.791346%2C53.333962&z=16" class="btn-map" target="_blank"><i class="fas fa-map-marker-alt"></i> Построить маршрут</a>
+                </div>
+            </div>
+            <!-- Место банкета -->
+            <div class="location-card">
+                <div class="map-placeholder">
+                    <i class="fas fa-champagne-glasses" style="font-size: 3rem; opacity: 0.7;"></i>
+                    <span>🍽️ Банкетный зал «Волна»</span>
+                </div>
+                <div class="location-info">
+                    <h3>Свадебный банкет</h3>
+                    <div class="time-badge"><i class="far fa-clock"></i> 16:00 - 23:00 </div>
+                    <div class="address">
+                        <i class="fas fa-location-dot"></i> Барнаул, площадь Баварина, 2<br>
+                        Банкетный зал «Волна»
+                    </div>
+                    <a href="https://yandex.ru/maps/org/volna/1306445093/?ll=83.803703%2C53.329034&z=14" class="btn-map" target="_blank"><i class="fas fa-car"></i> Проложить маршрут</a>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Дресс-код -->
+    <section class="animated">
+        <h2>Дресс-код</h2>
+        <p style="text-align:center; max-width:680px; margin:0 auto;">Пожалуйста, приходите в красивой одежде, которая соответствует торжественному настроению.<br>
+        Мы будем рады, если вы поддержите цветовую палитру нашей свадьбы:</p>
+        <div class="color-palette">
+            <div class="color-item"><div class="color-circle" style="background:#7eb6c4;"></div><span>Голубой</span></div>
+            <div class="color-item"><div class="color-circle" style="background:#e6daa6;"></div><span>Бежевый</span></div>
+            <div class="color-item"><div class="color-circle" style="background:#d7975b;"></div><span>Шоколадный</span></div>
+            <div class="color-item"><div class="color-circle" style="background:#e8cfd0;"></div><span>Пудровый</span></div>
+        </div>
+        <p class="note-soft">Соблюдение дресс-кода желательно, но не обязательно.</p>
+    </section>
+
+    <!-- Детали мероприятия -->
+    <section class="animated">
+        <h2>Детали</h2>
+        <div class="details-flex">
+            <div class="detail-item"><i class="fas fa-child"></i><h4>Без детей</h4><p>Формат не предполагает детской площадки и аниматоров. Пожалуйста, проведите этот вечер без детей.</p></div>
+            <div class="detail-item"><i class="fas fa-gift"></i><h4>Подарок</h4><p>Мы уже многое успели обустроить вместе, поэтому будем благодарны за поддержку наших планов - любой денежный подарок станет важным шагом к нашей общей цели.</p></div>
+            <div class="detail-item"><i class="fas fa-hand-sparkles"></i><h4>Без "Горько!"</h4><p>От всего сердца просим вас воздержаться от криков Горько! и сохранить атмосферу уютного семейного праздника.</p></div>
+        </div>
+    </section>
+
+    <!-- Таймер -->
+    <section class="animated">
+        <h2>До свадьбы осталось</h2>
+        <div class="timer-section">
+            <div class="timer-digits" id="timerContainer">
+                <div class="timer-block"><div class="timer-number" id="daysCount">0</div><div class="timer-label">дней</div></div>
+                <div class="timer-block"><div class="timer-number" id="hoursCount">0</div><div class="timer-label">часов</div></div>
+                <div class="timer-block"><div class="timer-number" id="minutesCount">0</div><div class="timer-label">минут</div></div>
+                <div class="timer-block"><div class="timer-number" id="secondsCount">0</div><div class="timer-label">секунд</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Анкета / Присутствие -->
+    <section class="animated">
+        <h2>Присутствие</h2>
+        <p style="text-align:center; margin-bottom:32px;">Пожалуйста, подтвердите ваше присутствие на нашем празднике до <strong>15.05.2026</strong> любым удобным способом или заполните форму ниже:</p>
+        <div class="form-card">
+            <form id="weddingForm">
+                <input type="text" class="input-field" id="guestFullName" name="name" placeholder="Ваше имя *" required>
+                <select name="attending" id="attendingStatus" class="styled-select">
+                    <option value="yes">С удовольствием приду</option>
+                    <option value="no">К сожалению, не смогу</option>
+                </select>
+               
+                <input type="text" class="input-field" name="wishes" placeholder="Ваши пожелания / любимая песня (необязательно)">
+                <button type="submit" class="btn" style="width:100%;">Отправить ответ</button>
+                <div id="formResponse" class="form-message-area"></div>
+            </form>
+            <p style="font-size:0.75rem; text-align:center; margin-top:25px;">*Заполните форму для каждого гостя отдельно.</p>
+        </div>
+    </section>
+
+    <!-- Telegram -->
+    <section class="animated">
+        <div class="telegram-card">
+            <img src="max-logo.jpg" alt="Max Logo" style="height: 7.00em; width: auto; margin-right: 8px; vertical-align: middle;">
+            <h3 style="margin: 5px 0 12px;">Канал праздника в MAX</h3><br>
+            <p>Мы создали канал в MAX, где можно будет узнать дополнительную информацию, посмотреть фотографии и видео со свадьбы.</p>
+            <a href="https://max.ru/join/Z1Gxy5x7Wgc5u9u7SbSU5Seir55Ursh6aMpl7hl5A0E" class="btn" style="margin-top:25px; display:inline-block;"> <img src="max-logo.jpg" alt="Max Logo" style="height: 3.00em; width: auto; margin-right: 8px; vertical-align: middle;"> Присоединиться к каналу</a>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Ivan & Irina · 29 мая 2026 · С любовью и трепетом ждём вас!</p>
+    <div class="footer-author">
+        Design & Developed by 
+        <a href="https://vk.com/nov17ch" target="_blank" rel="noopener noreferrer" class="author-link">
+            Egor Novichkov
+            <span class="link-arrow">→</span>
+        </a>
+    </div>
+</footer>
+
+<script>
+    // Анимация при скролле
+    const animatedItems = document.querySelectorAll('.animated');
+    const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                animObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    animatedItems.forEach(el => animObserver.observe(el));
+
+    // hero анимация сразу
+    setTimeout(() => {
+        const heroElem = document.getElementById('heroAnimate');
+        if(heroElem) heroElem.classList.add('visible');
+    }, 100);
+
+    // Таймер до 3 сентября 2026 11:40
+function updateWeddingTimer() {
+    // Барнаул UTC+7: 29 мая 2026, 11:40 по барнаульскому времени
+    const weddingTimestamp = new Date('2026-05-29T11:40:00+07:00').getTime();
+    const now = Date.now();
+    let diff = weddingTimestamp - now;
+    if (diff < 0) diff = 0;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (86400000)) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    document.getElementById('daysCount').innerText = days;
+    document.getElementById('hoursCount').innerText = hours;
+    document.getElementById('minutesCount').innerText = minutes;
+    document.getElementById('secondsCount').innerText = seconds;
+}
+updateWeddingTimer();
+setInterval(updateWeddingTimer, 1000);
+
+    // Форма обратной связи
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwADrCGy8hZ5TjeMaLtcEIeQRyFZjnyKM4GKSGX_UIoCbPVDEA25Cwq7eUoUc_mpQGKWA/exec';
+    const form = document.getElementById('weddingForm');
+    const feedbackDiv = document.getElementById('formResponse');
+
+    if (form) {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Показываем сообщение о загрузке
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.style.color = '#5f7b5c';
+            feedbackDiv.innerHTML = '⏳ Отправляем ваш ответ...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    if (response.ok) {
+                        feedbackDiv.innerHTML = '✅ Спасибо! Ваш ответ сохранён.';
+                        form.reset(); // Очищаем форму после успешной отправки
+                    } else {
+                        throw new Error('Ошибка при отправке');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error.message);
+                    feedbackDiv.style.color = '#b1624b';
+                    feedbackDiv.innerHTML = '❌ Произошла ошибка. Пожалуйста, попробуйте ещё раз.';
+                });
+
+            // Скрываем сообщение через 3 секунды
+            setTimeout(() => {
+                feedbackDiv.style.opacity = '0';
+                setTimeout(() => {
+                    feedbackDiv.style.display = 'none';
+                    feedbackDiv.style.opacity = '1';
+                }, 600);
+            }, 7000);
+        });
+    }
+	// Анимация фона hero-секции при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        // Небольшая задержка, чтобы анимация была заметна
+        setTimeout(function() {
+            hero.classList.add('visible-bg');
+        }, 100);
+    }
+});
+</script>
+</body>
+</html>
